@@ -1,0 +1,39 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hello","Hi there","greetings!","Hola!"],
+         "responses": ["Hello, My name is David Elvis. Welcome to my portfolio website."],
+         "context": [""]
+        },
+        {"tag": "Opening",
+         "patterns": [""],
+         "responses": ["If you won't mind, I will tell you a little bit who is David Elvis."],
+         "context": [""]
+        },
+        {"tag": "Opening",
+         "patterns": [""],
+         "responses": ["David Elvis is a ML/AI Engineer, with One year experience working in TraitsAI in machine learning department.He is passionate about cutting-edge technology and solving real-world problems."],
+         "context": [""]
+        },
+        {"tag": "Opening",
+         "patterns": [""],
+         "responses": ["He is a result-driven individual, I have successfully translated business requirements into models that were continuously improved with an aim to improve customer experience and driving business impact."],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "Goodbye","See you later","okay, bye",],
+         "responses": ["Have a nice day", "See you!","Bye! pleasure to chat with you"],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "Thanks for the help","That's helpful"],
+         "responses": ["You are welcome","Happy to help!"],
+         "context": [""]
+        },
+        
+        {"tag": "noanswer",
+         "patterns": [],
+         "responses": ["Sorry, can you repeat?","Sorry, I can't understand you"],
+         "context": [""]
+        }
+      ]
+}
