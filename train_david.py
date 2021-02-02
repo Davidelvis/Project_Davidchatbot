@@ -54,3 +54,53 @@ pickle.dump(words,open('words.pkl','wb'))
 
 #this will save our 'classes' list into new file named 'classes.pkl'
 pickle.dump(classes,open('classes.pkl','wb'))
+
+# **creating training data**
+training = []
+# empty array for output
+output_empty = [0] * len(classes)
+# training set
+for doc in documents:
+    # initialize the list "bag"(which is going to be bag of words)
+    bag = []
+    # creating list for tokens of pattern(words)
+    pattern_words = doc[0]
+    # lemmatization
+    pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
+    # if the word is found in current pattern then append 1 in the bag of words array otherwise append 0
+    for w in words:
+        bag.append(1) if w in pattern_words else bag.append(0)
+    
+    # only for current tag, output will be 1. Otherwise 0
+    output_row = list(output_empty)
+    output_row[classes.index(doc[1])] = 1
+    
+    training.append([bag, output_row])
+    
+# shuffling the efatures
+random.shuffle(training)
+training = np.array(training)
+#spliting the data into x and y . X - patterns, Y - intents
+train_x = list(training[:,0])
+train_y = list(training[:,1])
+print("Training data created")
+
+# We use Keras sequential API to build a deep neural network that has 3 layers. 
+
+model = Sequential()
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(train_y[0]), activation='softmax'))
+
+#Compile this Keras model with SGD optimizer.
+sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+
+#fit the model with 200 epochs 
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+#save the model in .h5 format
+model.save('chatbot_model.h5', hist)
+#print the statment when the model training is finished
+print("model created")
