@@ -11,3 +11,5 @@ Retrieval-based systems are limited to predefined responses. Chatbots that use g
 Generative chatbots use a combination of supervised learning, unsupervised learning, reinforcement learning, and adversarial learning for multi-step training.
 Supervised learning structures a conversation as a sequence-to-sequence problem. Sequence-to-sequence learning maps user inputs to a computer-generated response. However, this type of learning has a tendency to prioritize high-probability responses like “I know”. Supervised learning systems also have trouble including proper nouns into their speech since they appear less in dialogue compared to other words. As a result, supervised learning chatbots sound repetitive and cannot promote stable human conversation.
 
+## In this project, I will create a retrieval based chatbot and deploy it in my website (https://davidelvis.github.io/david/).
+With time, I will scale the project and build a Generative Based chatbot.
